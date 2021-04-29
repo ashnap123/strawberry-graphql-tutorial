@@ -6,13 +6,12 @@ import strawberry
 # step 1. pip install requirements.txt
 # step 2. strawberry server schema.schema -> this loads up our server, open the webpage
 # step 3. Add some documentation to the book type
-# step 4. refresh your your web page -> check the documetnation is added to the book type
+# step 4. refresh your your web page -> check the documentation is added to the book type
 # step 5. Play with our database -> open the database file and run the main. Assure ourselves this is just an on disk dict.
 # step 6. Let's create a mutation to add a book to the database.
 # step 7. Let's add a query to get all books from the database.
 # step 8. Add a book by the title.
 from dataclasses_json import dataclass_json
-from dataclasses import asdict
 from schema.database import Database
 
 print("Opening database")
@@ -33,16 +32,16 @@ class Result:
     message: str
 
 
-example_books: List[Book] = [Book(
-    title='The Great Gatsby',
-    author='F. Scott Fitzgerald',
-), Book(
-    title='Code',
-    author='Programmer',
-), Book(
-    title='Bible',
-    author='God',
-)]
+example_books: List[Book] = [
+    Book(
+        title='The Great Gatsby',
+        author='F. Scott Fitzgerald'),
+    Book(
+        title='Code',
+        author='Programmer'),
+    Book(
+        title='Bible',
+        author='God')]
 
 [db.store_book(item.to_dict()) for item in example_books]
 
