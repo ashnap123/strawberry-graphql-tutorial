@@ -12,12 +12,15 @@ class Database:
         """
         We store the database instance in self.db this is the shelf file and we open it on class instantiation
         """
-        self.db = shelve.open(self._get_database_file_location())
+        self.db: shelve = shelve.open(self._get_database_file_location())
 
     def get_all_books(self)-> List[Dict]:
         # Lets write the code to get all the values from our database
         # return list(self.db.values())
-        return []
+        return list(self.db.values())
+
+    def get_book_by_title(self, title: str):
+        return self.db[title]
 
     def store_book(self, item: Dict):
         key = item["title"]
